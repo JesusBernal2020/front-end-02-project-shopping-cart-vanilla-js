@@ -130,44 +130,18 @@ function cart(db, printProducts) {
     return total;
   }
 
-  // function checkout() {
-  //   for (const item of cart) {
-  //     const productFinded = db.find((p) => p.id === item.id);
-  //     let stockStatick;
-  //     for (const item of db) {
-  //       stockStatick = item.quantity;
-  //     }
-
-  //     if (productFinded.quantity) {
-  //       productFinded.quantity -= item.qty;
-  //     }
-
-  //     if (productFinded.quantity <= 0) {
-  //       productFinded.quantity = stockStatick;
-  //       console.log(`no hay mas prendas solo ${productFinded.quantity}`);
-  //     } else {
-  //       window.alert("gracias por su compra");
-  //       cart = [];
-  //     }
-  //   }
-
-  //   printCart();
-  //   printProducts();
-  // }
-
   function checkout() {
     for (const item of cart) {
       const productFinded = db.find((p) => p.id === item.id);
 
       if (productFinded) {
         if (productFinded.quantity >= item.qty) {
-          // Verificar si hay suficiente stock
           productFinded.quantity -= item.qty;
         } else {
-          console.log(
-            `No se puede comprar. Stock insuficiente para ${productFinded.name}.`
+          window.alert(
+            `No se puede comprar esa cantidad. solo hay ${productFinded.quantity} prendas de la referencia: ${productFinded.name} en el Stcok.`
           );
-          return; // Salir de la función si no hay suficiente stock
+          return;
         }
       }
     }
