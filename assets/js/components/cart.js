@@ -215,5 +215,3 @@ function cart(db, printProducts) {
 }
 
 export default cart;
-
-//TODO: terminal modal sectiones y favicon
